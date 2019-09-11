@@ -52,6 +52,7 @@ public class InputPanel{
 		priorities.addItem("low");
 		priorities.addItem("medium");
 		priorities.addItem("high");
+		priorities.addItem("critical");
 	}
 	
 	private void createButtons() {

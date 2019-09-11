@@ -78,6 +78,9 @@ public class ModifyButton extends JButton implements ActionListener{
 					else if(priority.equals("high")) {
 						data[i] = 2;
 					}
+					else if(priority.equals("critical")) {
+						data[i] = 3;
+					}
 					
 				}
 				else {
