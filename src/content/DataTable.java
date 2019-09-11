@@ -119,27 +119,31 @@ public class DataTable {
 
 			@Override
 			public int compare(String o1, String o2) {
-				final String[] priorities = {"high", "medium","low"};
 				
-				if(o1.equals(priorities[0]) && !o2.equals(priorities[0])) {
-					return 1;
-				}
-				else if(!o1.equals(priorities[0]) && o2.equals(priorities[0])) {
+				int priorityValue1 = findValue(o1);
+				int priorityValue2 = findValue(o2);
+				
+				if(priorityValue1 > priorityValue2) {
 					return -1;
 				}
+				else if(priorityValue1 < priorityValue2) {
+					return 1;
+				}
 				else {
-					if(o1.equals(priorities[1]) && !o2.equals(priorities[1])) {
-						return 1;
-					}
-					else if(!o1.equals(priorities[1]) && o2.equals(priorities[1])) {
-						return -1;
-					}
-					else {
-						return 0;
-					}
+					return 0;
 				}
 			}
+			
+			private int findValue(String value) {
+				final String[] priorities = {"critical", "high", "medium","low"};
 				
+				int i = 0;
+				while(!value.equals(priorities[i])) {
+					i++;
+				}
+				
+				return i;
+			}
 				
 		});
 		sorter.setSortKeys(sortKeysPriority);
